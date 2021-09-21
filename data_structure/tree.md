@@ -25,3 +25,55 @@
 파라미터로 받은 data 를 넣어줍니다.  
 인스턴스 변수 left_child와 right_child는 각각 왼쪽 자식과 오른쪽 자식을 저장해준다.    
 처음 생성될 때는 저장하려는 데이터만 가지고 있고 일단 자식 노드에 대한 레퍼런스는 가지고 있지 않은 것이다.  
+
+
+이진트리 
+```python
+class Node:
+    """이진 트리 노드 클래스"""
+    def __init__(self, data):
+            self.data = data
+            self.left_child = None
+            self.right_child = None
+
+
+# root 노드 생성
+root_node = Node("A")
+
+# 노드 인스턴스 생성 
+node_B = Node("B")
+node_C = Node("C")
+node_D = Node("D")
+node_E = Node("E")
+node_F = Node("F")
+node_G = Node("G")
+node_H = Node("H")
+
+# root 노드 자식 설정
+root_node.left_child = node_B
+root_node.right_child = node_C
+
+# B 노드 자식 설정
+node_B.left_child = node_D
+node_B.right_child = node_E
+
+# C 노드 자식 설정 
+node_C.right_child = node_F
+
+# E 노드 자식 설정
+node_E.left_child = node_G
+node_E.right_child = node_H
+
+
+
+# 실행 코드
+test_node = root_node.right_child.right_child
+print(test_node.data)
+
+
+test_node = root_node.left_child.right_child.left_child
+print(test_node.data)
+
+test_node = root_node.left_child.right_child.right_child
+print(test_node.data)
+```
