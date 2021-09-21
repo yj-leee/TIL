@@ -3,7 +3,7 @@
 # 정 이진 트리 (Full Binary Tree)
 
 모든 노드가 2개 또는 0개의 자식을 갖는 이진트리이다.  
-$$x^2$$
+
 
 # 완전 이진 트리 (Complete Binary Tree)
 
