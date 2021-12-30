@@ -1,17 +1,29 @@
+from typing import Optional
+
+
 class Node:
-    def __init__(self, item, next):
+    def __init__(self, item, pointer: Optional["Node"] = None):
         self.item = item
-        self.next = next
+        self.pointer: Optional["Node"] = pointer
 
 
-class Stact:
+class LinkedList:
     def __init__(self):
-        self.last = None
+        self.head: Optional[Node] = None
 
-    def push(self, item):
-        self.last = Node(item, self.last)
+    @property
+    def length(self) -> int:
+        if self.head is None:
+            return 0
+        else:
+            pass
 
-    def pop(self):
+
+class Stack(LinkedList):
+    def push(self, item) -> Optional[Node]:
+        self.last: Optional[Node] = Node(item, self.last)
+
+    def pop(self) -> T:
         item = self.last.item
-        self.last = self.last.next
+        self.pointer: Optional[Node] = self.last.pointer
         return item
