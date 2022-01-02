@@ -9,7 +9,7 @@ start = array[0]
 end = array[-1] - array[0]
 result = 0
 
-while (start <= end):
+while start <= end:
     mid = (start + end) // 2
     value = array[0]
     count = 1
