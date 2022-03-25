@@ -20,3 +20,5 @@ for i in range(n - 1, -1, -1):
     # 상담이 기간을 벗어나는 경우
     else:
         dp[i] = max_val
+
+print(max_val)
