@@ -1,20 +1,20 @@
-# data = [[],[2,3,4],[4],[4]]
-# visited = [false,false,false,false]
-def dfs(graph, v, visited):
-    visited[v] = True
-    print(v, end=' ')
-    for i in graph[v]:
+n, m, v = map(int, input().split())
+visited = [False for _ in range(n + 1)]
+graph = [[] for _ in range(n + 1)]
+
+for _ in range(m):
+    start, end = map(int, input().split())
+    graph[start].append(end)
+    graph[end].append(start)
+    graph[start].sort()
+    graph[end].sort()
+    
+def dfs(graph, start, visited):
+    visited[start] = True
+    print(start, end=" ")
+
+    for i in graph[start]:
         if not visited[i]:
             dfs(graph, i, visited)
-
-
-n, m, v = map(int, input().split())
-graph = [] * n
-visited = [False] * n
-
-for i, j in range(m):
-    graph[i].append(j)
-
-
 
 dfs(graph, 1, visited)
