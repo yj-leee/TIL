@@ -1,11 +1,11 @@
-n, m =  map(int, input().split())
+n, m = map(int, input().split())
 array = list(map(int, input().split()))
 
 dp = []
 index = 0
 
 for i in range(n):
-    dp.append(array[index:index + m])
+    dp.append(array[index : index + m])
     index += m
 
 for j in range(1, m):

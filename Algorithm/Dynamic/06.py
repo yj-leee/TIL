@@ -1,29 +1,24 @@
-for tc in range(int(input())):
-    n, m = map(int, input().split())
-    array = list(map(int, input().split()))
+n = int(input())
+t = []
+p = []
+dp = [0] * (n + 1)
+max_val = 0
 
-    dp = []
-    index = 0
-    for i in range(n):
-        dp.append(array[index : index + m])
-        index += m
+for _ in range(n):
+    time, price = map(int, input().split())
+    t.append(time)
+    p.append(price)
 
-    for j in range(1, m):
-        for i in range(n):
-            # 왼쪽 위에서 오는 경우
-            if i == 0:
-                left_up = 0
-            else:
-                left_up = dp[i - 1][j - 1]
-            # 왼쪽 아래에서 오는 경우
-            if i == n - 1:
-                left_down = 0
-            else:
-                left_down = dp[i + 1][j - 1]
-            # 왼쪽에서 오는 경우
-            left = dp[i][j - 1]
-            dp[i][j] = dp[i][j] + max(left_up, left_down, left)
+# 리스트를 뒤에서부터 거꾸로 확인
+for i in range(n - 1, -1, -1):
+    time = t[i] + i
+    # 상담이 기간 안에 끝나는 경우
+    if time <= n:
+        # 점화식에 맞게 현재까지의 최고 이익 계산
+        dp[i] = max(p[i] + dp[time], max_val)
+        max_val = dp[i]
+    # 상담이 기간을 벗어나는 경우
+    else:
+        dp[i] = max_val
 
-    result = 0
-    for i in range(n):
-        result = max(result, dp[i][m - 1])
+print(max_val)
